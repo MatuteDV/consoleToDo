@@ -8,6 +8,7 @@ Ejemplo: crear --titulo "El titulo de la tarea" --descripcion "La descripcion"
 * Usar "listar" para listar los titulos de todas las tareas[, --modificador valor].
 Ejemplo: listar --estado 1 | --estado 2 | --estado 3 | --estado 12
 (Donde: Pendiente = 1, Iniciada = 2, Terminada = 3 y Pendientes+Iniciadas = 12)
+Puede indicar listar con detalles indicando: listar all
 
 * Usar "detalle" + [Nº de tarea] para ver la tarea completa.
 

@@ -39,8 +39,12 @@ switch (isArgs1) {
         
         break;
     case "listar":  //Agregar parametro opcional para determinar si se quiere listar solo titulos o completos
-
-        console.log( listTasks(argv.estado) );
+        if ( !isArgs2.toLowerCase() === 'all' ) {
+            console.log('El segundo parametro junto a listar no se reconoce - puede consultar "ayuda"');
+            break            
+        }
+       
+        console.log( listTasks(argv.estado, isArgs2) );
         
         break;
     case "detalle": 

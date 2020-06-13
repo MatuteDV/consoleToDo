@@ -1,7 +1,7 @@
 {
-  "name": "c4-app-todo",
+  "name": "consoletodo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Puede hacer uso de este código. Debe agregar dependencia \"yargs\" package.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +9,15 @@
   "author": "Matias Vieira",
   "license": "ISC",
   "dependencies": {
+    "argv": "0.0.2",
     "yargs": "^15.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatuteDV/consoleToDo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatuteDV/consoleToDo/issues"
+  },
+  "homepage": "https://github.com/MatuteDV/consoleToDo#readme"
 }
