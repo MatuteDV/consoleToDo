@@ -22,5 +22,17 @@
   "titulo": "La quinta tarea",
   "descripcion": "Modularizar todos los Case del switch",
   "estado": "Iniciada"
+ },
+ {
+  "titulo": "id en save 2",
+  "descripcion": "Agregar que save guarde id",
+  "estado": "Pendiente",
+  "id": 7
+ },
+ {
+  "titulo": "id en save 3",
+  "descripcion": "Agregar que save guarde id",
+  "estado": "Terminada",
+  "id": 8
  }
 ]
