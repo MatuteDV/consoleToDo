@@ -2,7 +2,7 @@ const fs = require('fs');
 
 
 module.exports = idTaskToDelete => {
-    let tasks = JSON.parse( fs.readFileSync( './assets/tareas.txt', 'utf-8') );
+    let tasks = JSON.parse( fs.readFileSync( './assets/tareas.json', 'utf-8') );
     let response = '';
     let existe = false;
     
@@ -15,7 +15,7 @@ module.exports = idTaskToDelete => {
 
     if (existe) {
         tasks = JSON.stringify(tasks, null, ' ');
-        fs.writeFileSync('./assets/tareas.txt', tasks, 'utf-8')
+        fs.writeFileSync('./assets/tareas.json', tasks, 'utf-8')
         response = 'Se eliminó la tarea.';
     } else { 
         response = 'No se encontró la tarea indicada.';

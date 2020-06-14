@@ -1,3 +1,3 @@
 module.exports = {
-    tareas: './assets/tareas.txt',
+    tareas: './assets/tareas.json',
 }

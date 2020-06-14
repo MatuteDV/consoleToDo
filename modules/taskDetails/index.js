@@ -3,7 +3,7 @@ const responserMaker = require('../responseMaker')
 
 module.exports = id => {
     let response = '';
-    let tasks = JSON.parse( fs.readFileSync('./assets/tareas.txt', 'utf-8') );
+    let tasks = JSON.parse( fs.readFileSync('./assets/tareas.json', 'utf-8') );
     
     let filteredTasks = tasks.filter( value => {
         return value.id === id

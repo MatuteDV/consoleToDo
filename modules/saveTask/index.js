@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-//const pathTasksFile = '../../assets/tareas.txt';
-const pathTasksFile = './assets/tareas.txt';
-const pathIdMaximoFile = './assets/idMaximo.txt';
+//const pathTasksFile = '../../assets/tareas.json';
+const pathTasksFile = './assets/tareas.json';
+const pathIdMaximoFile = './assets/idMaximo.json';
 
 let save = newTask => {
     let taskFile = fs.readFileSync(pathTasksFile,'utf-8');

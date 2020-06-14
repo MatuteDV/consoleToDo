@@ -2,7 +2,7 @@ const fs = require('fs');
 const responseMaker = require('../responseMaker.js') 
 
 module.exports = ( option = 0, all='all' ) => {
-    let tasks = fs.readFileSync('./assets/tareas.txt', 'utf-8');
+    let tasks = fs.readFileSync('./assets/tareas.json', 'utf-8');
     tasks = JSON.parse(tasks);
     
     let filtredTasks = [];
