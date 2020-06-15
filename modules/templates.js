@@ -10,7 +10,7 @@ Ejemplo: listar --estado 1 | --estado 2 | --estado 3 | --estado 12
 (Donde: Pendiente = 1, Iniciada = 2, Terminada = 3 y Pendientes+Iniciadas = 12)
 Puede indicar listar con detalles indicando: listar all
 
-* Usar "detalle" + [Nº de tarea] para ver la tarea completa.
+* Usar "detalle" + [Nº de tarea] para ver una sola tarea completa.
 
 * Usar "modificar" + [Nº de tarea] para cambiar un titulo, una descripcion o un estado, 
 acompañado de --modificador con su valor valor correspondiente.

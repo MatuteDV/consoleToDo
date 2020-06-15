@@ -11,7 +11,7 @@ module.exports = taskToUpdate => {
             existe = true;
             value.titulo = taskToUpdate.titulo !== null ? taskToUpdate.titulo : value.titulo;
             value.descripcion = taskToUpdate.descripcion !== null ? taskToUpdate.descripcion : value.descripcion;
-            value.estado = taskToUpdate.estado !== null ? taskToUpdate.estado : value.descripcion;
+            value.estado = taskToUpdate.estado !== null ? taskToUpdate.estado : value.estado;
         }
     });
 

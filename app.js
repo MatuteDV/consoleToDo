@@ -19,7 +19,7 @@ const deleteTask = require('./modules/deleteTask/index');
 // ----------- Falta comentar los módulos -------------------
 
 // Se verifica que existan argumentos y se inicializan variables.
-let isArgs1 = argv._[0] ? argv._[0].toLowerCase() : ''; //Argumento 1: determina la acción - Switch
+let isArgs1 = argv._[0] ? argv._[0].toString().toLowerCase() : ''; //Argumento 1: determina la acción - Switch
 let isArgs2 = argv._[1] ? argv._[1] : '';   //argumento 2: Se usa para recibir ID p/ Detalle, Modificar y Eliminar
 let id = null;
     //Array para conversion de estados (numericos) a lo que se va a guardar (strings).
@@ -69,7 +69,7 @@ switch (isArgs1) {
         taskToUpdate.id = id;
 
         if ( !argv.titulo && !argv.descripcion && !argv.estado) {
-            console.log('No pasó ningun parametro a modificar - puede consultar "ayuda"');
+            console.log('No indicó ningun campo a modificar - puede consultar "ayuda"');
             break
         }
 
@@ -84,6 +84,8 @@ switch (isArgs1) {
                 break
             } 
             taskToUpdate.estado = estados[estado-1];
+        } else {
+            taskToUpdate.estado = null;
         }
 
         taskToUpdate.titulo = argv.titulo ? argv.titulo : null;
