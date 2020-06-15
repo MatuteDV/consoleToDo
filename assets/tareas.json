@@ -24,15 +24,15 @@
   "estado": "Iniciada"
  },
  {
-  "titulo": "id en save 2",
-  "descripcion": "Agregar que save guarde id",
+  "titulo": "Colores To do",
+  "descripcion": "Agregar colores a la app To do",
   "estado": "Pendiente",
-  "id": 7
+  "id": 9
  },
  {
-  "titulo": "id en save 3",
-  "descripcion": "Agregar que save guarde id",
-  "estado": "Terminada",
-  "id": 8
+  "titulo": "decima tarea",
+  "descripcion": "",
+  "estado": "Pendiente",
+  "id": 11
  }
 ]

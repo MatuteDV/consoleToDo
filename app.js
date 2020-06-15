@@ -1,5 +1,6 @@
 // --Modulos internos
 const fs = require('fs'); // Necesario agregar acá este modulo? creo que no. probé un poco y anda sin él
+const chalk = require('chalk');
 // Pero lo dejo por las dudas para compartir y les funcione.
 
 // --Modulos de tercero
@@ -7,8 +8,8 @@ const argv = require('yargs').argv;
 
 // --Modulos Propios
 
-// texto de ayuda a imprimir (Si, era singular. capaz hacía un objeto de textos por cada propiedad.)
-const help = require('./modules/templates');
+// texto a imprimir.
+const templates = require('./modules/templates');
 
 // Modulos de lógica para cada switch - Todos retornar un texto a mostrar
 const listTasks = require('./modules/listTasks/index');
@@ -27,31 +28,31 @@ const estados = ['Pendiente', 'Iniciada', 'Terminada'];
 
 switch (isArgs1) {
     case "ayuda":
-        console.log(help);
+        console.log(templates.ayuda);
         break;
     case "crear": 
-        let newTask = {};
-        newTask.titulo = argv.titulo;    
-        newTask.descripcion = argv.descripcion;
-        newTask.estado = "Pendiente";
-    
-        console.log(saveTask(newTask));
+        if ( !argv.titulo || argv.titulo === '' ) {
+            console.log( templates.faltaTitulo + ' - ' + templates.consultarAyuda);
+            break
+        }
+        let titulo = argv.titulo;
+        let descripcion = argv.descripcion ? argv.descripcion.toString() : '';
+        console.log( saveTask( titulo, descripcion ) );
         
         break;
-    case "listar":  //Agregar parametro opcional para determinar si se quiere listar solo titulos o completos
-        if ( !isArgs2.toLowerCase() === 'all' ) {
-            console.log('El segundo parametro junto a listar no se reconoce - puede consultar "ayuda"');
+    case "listar": 
+        if ( isArgs2.toLowerCase() === 'all' || isArgs2.toLowerCase() === '' ) {
+            console.log( listTasks(argv.estado, isArgs2) );
             break            
         }
-       
-        console.log( listTasks(argv.estado, isArgs2) );
+        console.log( templates.idNumerico+ ' - ' + templates.consultarAyuda);
         
         break;
     case "detalle": 
         id = Number(isArgs2);
         
         if ( !id ) {
-            console.log('Debe indicar ID numerico - puede consultar "ayuda". ');
+            console.log(templates.idNumerico + ' - ' + templates.consultarAyuda );
         } else {
             console.log( taskDetails(id) );
         }
@@ -61,7 +62,7 @@ switch (isArgs1) {
         id = Number(isArgs2);
                         
         if ( !id ) {
-            console.log('Debe indicar un ID numerico - puede consultar "ayuda". ');
+            console.log(templates.idNumerico + ' - ' + templates.consultarAyuda );
             break
         }
         
@@ -69,18 +70,18 @@ switch (isArgs1) {
         taskToUpdate.id = id;
 
         if ( !argv.titulo && !argv.descripcion && !argv.estado) {
-            console.log('No indicó ningun campo a modificar - puede consultar "ayuda"');
+            console.log( templates.campoModificador + ' - ' + templates.consultarAyuda );
             break
         }
 
-        if ( argv.estado ) { //  <--------- Evaluación redundante, ni ganas de sacarlo.
+        if ( argv.estado ) { 
             let estado = Number(argv.estado);
             if ( !estado ) {
-                console.log('El estado debe ser un número - puede consultar "ayuda"');
+                console.log( templates.estadoNumerico + ' - ' + templates.consultarAyuda );
                 break
             }
             if (estado < 1 || estado > 3) {
-                console.log('Los estados posibles son 1, 2 y 3 - puede consultar "ayuda"');
+                console.log( templates.estadosPosibles + ' - ' + templates.consultarAyuda );
                 break
             } 
             taskToUpdate.estado = estados[estado-1];
@@ -98,7 +99,7 @@ switch (isArgs1) {
         id = Number(isArgs2);
                         
         if ( !id ) {
-            console.log('Debe indicar un ID numerico - puede consultar "ayuda". ');
+            console.log(templates.idNumerico + ' - ' + templates.consultarAyuda );
             break
         }
 
@@ -106,6 +107,6 @@ switch (isArgs1) {
         
         break;
     default:
-        console.log("\nNo se reconoce el comando. Puede usar 'ayuda' para obtener más información.\n")
+        console.log( templates.comandoIncorrecto );
         break;
 }

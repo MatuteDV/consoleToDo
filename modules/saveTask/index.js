@@ -1,10 +1,18 @@
 const fs = require('fs');
+const chalk = require('chalk');
+const templates = require('../templates');
 
 //const pathTasksFile = '../../assets/tareas.json';
 const pathTasksFile = './assets/tareas.json';
 const pathIdMaximoFile = './assets/idMaximo.json';
 
-let save = newTask => {
+let save = ( titulo, descripcion = '') => {
+    let newTask = {};
+    
+    newTask.titulo = titulo;
+    newTask.descripcion = descripcion;
+    newTask.estado = 'Pendiente';
+
     let taskFile = fs.readFileSync(pathTasksFile,'utf-8');
     let idMaximo = fs.readFileSync(pathIdMaximoFile, 'utf-8');
     taskFile = JSON.parse(taskFile);
@@ -16,7 +24,7 @@ let save = newTask => {
     });
     
     if (repetido === true) {
-        return '\nTarea no agregada, ya existe otra tarea con el mismo titulo.\n'
+        return templates.tituloRepetido
     }
     newTask.id = ++idMaximo.idMaximo;
     taskFile.push(newTask);
@@ -24,7 +32,13 @@ let save = newTask => {
     fs.writeFileSync(pathTasksFile, JSON.stringify(taskFile, null, ' '),'utf-8'); 
     fs.writeFileSync(pathIdMaximoFile, JSON.stringify(idMaximo, null, ' '), 'utf-8')
     
-    return 'La tarea "' + newTask.titulo + '" se agrego exitosamente.'
+    return '\nLa tarea ' 
+        + chalk.bold('"' 
+        + newTask.titulo 
+        + '"') 
+        + ' se agregó ' 
+        + chalk.greenBright('exitosamente.')
+        + '\n'
 }
 
 
