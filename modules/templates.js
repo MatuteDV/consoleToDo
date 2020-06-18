@@ -22,7 +22,7 @@ templates.idNoExiste = 'No se encontró la tarea indicada.';
 
 templates.tareaActualizada = 'Se actualizó la tarea.';
 
-templates.estadoNoValido = 'Estado a listar no valido  - Verifique en "ayuda" las opciones.';
+templates.estadoNoValido = 'Estado a listar no valido  - Verifique en'+ chalk.yellow('"ayuda"') + ' las opciones.';
 
 templates.listaVacia = 'No hay ninguna tarea que listar';
 
@@ -41,7 +41,7 @@ templates.estadoNumerico = 'El estado debe ser un número';
 
 templates.campoModificador = 'No indicó ningun campo a modificar';
 
-templates.comandoIncorrecto = 'No se reconoce el comando. Puede usar "ayuda" para obtener más información.';
+templates.comandoIncorrecto = 'No se reconoce el comando. Puede usar' + chalk.yellow('"ayuda"') + ' para obtener más información.';
 
 templates.consultarAyuda = chalk.bold('puede consultar "ayuda"');
 
